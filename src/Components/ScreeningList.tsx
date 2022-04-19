@@ -10,7 +10,7 @@ export function ScreeningList(props:{results:[]}) {
     return (<div>
 
 
-        {props.results.map((elem,i)=><ScreeningResult elem={elem}></ScreeningResult>)}
+        {props.results.map((elem, i) => <ScreeningResult key={i} elem={elem}></ScreeningResult>)}
 
        </div>);
 
