@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const apiKey1 = process.env.api_key_1 || "";
-const apiKey2 = process.env.api_key_2 || "";
+const accessToken = process.env.REACT_APP_TRADE_ACCESS_TOKEN || "";
 
 export function getScreening(name: string, countries: string, fuzzy: string) {
   return axios({
@@ -10,7 +9,7 @@ export function getScreening(name: string, countries: string, fuzzy: string) {
     responseType: "json",
     headers: {
       "Cache-Control": "no-cache",
-      "subscription-key": "9f9e9a19de4a418485ea17ddcb79d3a7",
+      "subscription-key": `${accessToken}`,
     },
     params: {
       name: name,
@@ -20,4 +19,29 @@ export function getScreening(name: string, countries: string, fuzzy: string) {
   })
     .then((response) => response.data)
     .catch((error) => console.log(error));
+}
+
+export function signUp(
+  first_name: string,
+  last_name: string,
+  email: string,
+  password: string
+) {
+  return axios
+    .post(`http://localhost:3000/signup`, {
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: password,
+    })
+    .then((response) => response.data);
+}
+
+export function logIn(email: string, password: string) {
+  return axios
+    .post(`http://localhost:3000/login`, {
+      email: email,
+      password: password,
+    })
+    .then((response) => response.data);
 }
