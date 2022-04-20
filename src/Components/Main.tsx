@@ -1,9 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getScreening } from "../Services/ScreeningApi";
 import { ScreeningList } from "./ScreeningList";
 import { SearchForm } from "./SearchForm";
+import { ScreeningContext } from '../Context/ScreeningContext'
+import { useNavigate } from "react-router-dom";
 
-export function Main () {
+export function Main() {
+
+    const { auth } = useContext(ScreeningContext);
+    let navigate = useNavigate();
+    
+    // check if user is logged in, if auth false, navigate them to the login route
+    // useEffect(() => {
+    //     if (auth === false) {
+    //       navigate("/login");
+    //     }
+    // }, []);
+    
 
     const [results, setResults] = useState<any>([]);
 

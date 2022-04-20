@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { ScreeningList } from './Components/ScreeningList';
 import { Main } from './Components/Main';
 import { Routes, Route } from 'react-router-dom';
 import { SignUp } from './Components/SignUp';
+import { LogIn } from './Components/LogIn';
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
 
         <Route path='/' element={<Main></Main>}></Route>
         <Route path="signup" element={<SignUp></SignUp>}></Route>
+        <Route path="login" element={<LogIn></LogIn>}></Route>
         
       </Routes>
       

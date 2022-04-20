@@ -45,3 +45,9 @@ export function logIn(email: string, password: string) {
     })
     .then((response) => response.data);
 }
+
+export function fetchUser(id: number) {
+  return axios
+    .get(`http://localhost:3000/users/${id}`, {})
+    .then((response) => response.data);
+}

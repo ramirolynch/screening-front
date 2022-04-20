@@ -28,7 +28,7 @@ export function SignUp() {
   const navigate = useNavigate();
 
   const signUpError = () =>
-    toast.error("Invalid email or password", {
+    toast.error("Please enter your email and password", {
       position: "top-right",
       autoClose: 900,
       hideProgressBar: true,
@@ -63,10 +63,10 @@ export function SignUp() {
   function handleSubmit(e: any) {
     e.preventDefault();
 
-    if (email.length === 0 && password.length === 0) {
+    if (email.length === 0 || password.length === 0) {
       signUpError();
       return;
-    } else if (password.length < 8 && confirmPassword.length < 8) {
+    } else if (password.length < 8 || confirmPassword.length < 8) {
       passwordLengthError();
     } else if (password !== confirmPassword) {
       passwordNoMatchError();
@@ -85,7 +85,7 @@ export function SignUp() {
       setEmail("");
       setPassword("");
 
-      navigate("/getTripDetails");
+      navigate("/");
     }
   }
 
