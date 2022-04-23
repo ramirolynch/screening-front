@@ -10,12 +10,14 @@ export function Main() {
     const { auth } = useContext(ScreeningContext);
     let navigate = useNavigate();
     
-    // check if user is logged in, if auth false, navigate them to the login route
-    // useEffect(() => {
-    //     if (auth === false) {
-    //       navigate("/login");
-    //     }
-    // }, []);
+   // check if user is logged in, if auth false, navigate them to the login route
+    
+    useEffect(() => {
+        console.log(auth)
+        if (auth === false) {
+          navigate("/login");
+        }
+    }, []);
     
 
     const [results, setResults] = useState<any>([]);
@@ -32,7 +34,7 @@ export function Main() {
         
         <div className='search'>
 
-            <SearchForm onSubmit={(name, countries, fuzzy) => setSearchHandler(name, countries,fuzzy)}></SearchForm>
+            <SearchForm onSubmit={(name, countries, fuzzy) => setSearchHandler(name, countries, fuzzy)}></SearchForm>
             
             <ScreeningList results={results}></ScreeningList>
 

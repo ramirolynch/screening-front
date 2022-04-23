@@ -20,18 +20,21 @@ export function SearchForm (props: {onSubmit:(name:string,countries:string, fuzz
     }
 
     return(
-        <div>
-            <label htmlFor="name">Name:
+        <div className="searchForm">
+            <label htmlFor="name">Name: </label>
                 <input id="name" value={name} onChange={(e) => setName(e.target.value)} type="text" /> 
-            </label>
+           
             <label htmlFor="fuzzy_name">Fuzzy Search:
                 <input id="fuzzy_name"  onChange={handleFuzzy}  type="checkbox" /> 
-            </label>
+                </label>
          
-            <label htmlFor="country_name">Country:
+            <label htmlFor="country_name">Country:</label>
                 <input id="country_name" value={countries} onChange={(e) => setCountries(e.target.value)} type="text" /> 
-            </label>
-            <button onClick={()=> props.onSubmit(name,countries,fuzzy)}>Search</button>
+            
+
+          
+                <button onClick={() => props.onSubmit(name, countries, fuzzy)}>Search</button>
+        
         </div>
     );
 }

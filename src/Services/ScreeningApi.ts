@@ -3,6 +3,13 @@ import axios from "axios";
 const accessToken = process.env.REACT_APP_TRADE_ACCESS_TOKEN || "";
 
 export function getScreening(name: string, countries: string, fuzzy: string) {
+  const params = {
+    ...(name !== "" && { name: name }),
+    ...(countries !== "" && { countries: countries }),
+    ...(fuzzy === "true" && { fuzzy_name: fuzzy }),
+    ...{ size: 2 },
+  };
+
   return axios({
     method: "get",
     url: "https://data.trade.gov/consolidated_screening_list/v1/search",
@@ -11,11 +18,7 @@ export function getScreening(name: string, countries: string, fuzzy: string) {
       "Cache-Control": "no-cache",
       "subscription-key": `${accessToken}`,
     },
-    params: {
-      name: name,
-      countries: countries,
-      fuzzy_name: fuzzy,
-    },
+    params: params,
   })
     .then((response) => response.data)
     .catch((error) => console.log(error));

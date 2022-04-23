@@ -4,17 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Router, Route } from 'react-router-dom';
+import { ScreeningContextProvider } from './Context/ScreeningContextModel';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-   
+    <ScreeningContextProvider>
       <BrowserRouter>
          <App />
       </BrowserRouter>
-   
+    </ScreeningContextProvider>
   </React.StrictMode>
 );
 

@@ -1,2 +1,39 @@
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.searchForm > label {
+  display: flex;
+  flex-direction: column;
+}
+/* .searchForm > label:nth-child(3) {
+  margin-bottom: 0.6em;
+} */
+
+.searchForm > input {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.searchForm > button {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+.result {
+  background-color: beige;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 @media only screen and (max-width: 768px) {
 }

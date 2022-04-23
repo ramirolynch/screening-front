@@ -12,7 +12,7 @@ export function LogIn() {
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   let navigate = useNavigate();
-  const { loginUser, addFirstName, addLastName, addUserId } =
+  const { auth,loginUser, addFirstName, addLastName, addUserId } =
   useContext(ScreeningContext);
 
   const loginError = () =>
@@ -53,7 +53,8 @@ export function LogIn() {
           if (response.email !== email) {
             return;
           }
-          loginUser();
+            loginUser();
+            console.log(auth);
           navigate("/");
         })
         .catch((error) => {
