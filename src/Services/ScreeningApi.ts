@@ -3,7 +3,7 @@ import axios from "axios";
 const accessToken = process.env.REACT_APP_TRADE_ACCESS_TOKEN || "";
 
 export function getScreening(name: string, countries: string, fuzzy: string) {
-  const params = {
+  let params = {
     ...(name !== "" && { name: name }),
     ...(countries !== "" && { countries: countries }),
     ...(fuzzy === "true" && { fuzzy_name: fuzzy }),
@@ -37,6 +37,27 @@ export function signUp(
       email: email,
       password: password,
     })
+    .then((response) => response.data);
+}
+
+export function postReview(
+  list_id: string,
+  searched_name: string,
+  matched_name: string,
+  score: number,
+  positive_match: boolean,
+  user_id: number
+) {
+  let review = {
+    ...(list_id !== "" && { list_id: list_id }),
+    ...(searched_name !== "" && { searched_name: searched_name }),
+    ...(matched_name !== "" && { mached_name: matched_name }),
+    ...{ score: score },
+    ...{ positive_match: positive_match },
+    ...{ user_id: user_id },
+  };
+  return axios
+    .post(`http://localhost:3000/matchreview`, review)
     .then((response) => response.data);
 }
 
