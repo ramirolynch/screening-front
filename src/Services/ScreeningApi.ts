@@ -37,7 +37,8 @@ export function signUp(
       email: email,
       password: password,
     })
-    .then((response) => response.data);
+    .then((response) => response.data)
+    .catch((error) => console.log(error));
 }
 
 export function postReview(
@@ -51,14 +52,15 @@ export function postReview(
   let review = {
     ...(list_id !== "" && { list_id: list_id }),
     ...(searched_name !== "" && { searched_name: searched_name }),
-    ...(matched_name !== "" && { mached_name: matched_name }),
+    ...(matched_name !== "" && { matched_name: matched_name }),
     ...{ score: score },
     ...{ positive_match: positive_match },
     ...{ user_id: user_id },
   };
   return axios
     .post(`http://localhost:3000/matchreview`, review)
-    .then((response) => response.data);
+    .then((response) => response.data)
+    .catch((error) => console.log(error.response.data));
 }
 
 export function logIn(email: string, password: string) {

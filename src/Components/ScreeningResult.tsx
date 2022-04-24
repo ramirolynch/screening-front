@@ -8,12 +8,20 @@ export function ScreeningResult(props: { elem: any }) {
 
     const [showButton, setShowButton] = useState<boolean>(false);
     const { searched_name } = useContext(ScreeningContext);
+    const [matchedName, setMatchedName] = useState('');
+    const [matchscore, setMatchScore] = useState<number>(0);
     
 
     function handleClick() {
-        return showButton === false ? true : false;
-    
-}
+        if (showButton === false) {
+            setShowButton(true)
+        } else {
+            setShowButton(false)
+        }
+        setMatchScore(fuzz.ratio(searched_name, props.elem.name))
+        setMatchedName(props.elem.name)
+        console.log(props.elem)
+    }
 
     return (
         <div>
@@ -27,7 +35,7 @@ export function ScreeningResult(props: { elem: any }) {
             <button onClick={handleClick}>
                 Review Match
             </button>
-            {showButton && <ReviewMatch elem={props.elem}></ReviewMatch>}
+            {showButton === true && <ReviewMatch elem={props.elem} matchscore={matchscore} matchedName={matchedName}></ReviewMatch>}
         </div>
     );
 }

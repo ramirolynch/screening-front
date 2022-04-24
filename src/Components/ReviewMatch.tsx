@@ -2,10 +2,10 @@ import { useContext, useState } from "react";
 import { ScreeningContext } from "../Context/ScreeningContext";
 import { postReview } from "../Services/ScreeningApi";
 
-export function ReviewMatch (props: {elem:any}) {
+export function ReviewMatch (props: {elem:any, matchscore:number, matchedName:string}) {
 
 
-    const { searched_name,user_id } = useContext(ScreeningContext)
+    const { searched_name, user_id } = useContext(ScreeningContext)
     const [positiveMatch, setPositiveMatch] = useState<boolean>(false);
     
     function handleFuzzy() {
@@ -21,7 +21,12 @@ export function ReviewMatch (props: {elem:any}) {
 
 
     function handleClick() {
-        postReview(props.elem.list_id,searched_name,props.elem.name,props.elem.score, positiveMatch, user_id)
+        
+        console.log('positiveMatch', positiveMatch);
+        console.log('matchedName', props.elem.name)
+        console.log('userId', user_id);
+
+        postReview(props.elem.id ,searched_name, props.elem.name, props.matchscore, positiveMatch, user_id)
     }
 
     return(
@@ -34,14 +39,13 @@ export function ReviewMatch (props: {elem:any}) {
             <p>{props.elem.name}</p>
               
          
-            <p>Score</p>
-            <p>{props.elem.score}</p>
+            <p>Score:</p>
+            <p>{props.matchscore}</p>
 
-            <label htmlFor="posMatch">
-                <input id='posMatch' type='checkbox' />
-            </label>
-          
-            <button onClick={handleClick}>Search</button>
+            <p>Positive Match:</p>
+            <input id='posMatch' type='checkbox' />
+             
+            <button onClick={handleClick}>Submit Review</button>
         
         </div>
     );
