@@ -29,11 +29,11 @@ export function SearchForm (props: {onSubmit:(name:string,countries:string, fuzz
                 </label>
          
             <label htmlFor="country_name">Country:</label>
-                <input id="country_name" value={countries} onChange={(e) => setCountries(e.target.value)} type="text" /> 
+            
+            <input id="country_name" value={countries} onChange={(e) => setCountries(e.target.value)} type="text" /> 
             
 
-          
-                <button onClick={() => props.onSubmit(name, countries, fuzzy)}>Search</button>
+            <button onClick={() => props.onSubmit(name, countries, fuzzy)}>Search</button>
         
         </div>
     );

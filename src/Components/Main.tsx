@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export function Main() {
 
-    const { auth } = useContext(ScreeningContext);
+    const { auth, addSearchedName } = useContext(ScreeningContext);
     let navigate = useNavigate();
     
    // check if user is logged in, if auth false, navigate them to the login route
@@ -26,6 +26,7 @@ export function Main() {
     function setSearchHandler(name: string,countries:string, fuzzy:string) {
         
         getScreening(name, countries, fuzzy).then(response => setResults(response.results));
+        addSearchedName(name);
         
         console.log(results);
     }

@@ -55,6 +55,12 @@ export function ScreeningContextProvider({ children }: Props) {
     setLastName(last_name);
   }
 
+  const [searched_name, setSearchedName] = useState<string>('');
+
+  function addSearchedName(search_name: string) {
+    setSearchedName(search_name);
+  }
+
   const [user_id, setUserId] = useState<number>(0);
 
   function addUserId(userid: number) {
@@ -74,7 +80,9 @@ export function ScreeningContextProvider({ children }: Props) {
         addFirstName,
         addLastName,
         user_id,
-        addUserId
+        addUserId,
+        searched_name,
+        addSearchedName
       }}
     >
       {children}
