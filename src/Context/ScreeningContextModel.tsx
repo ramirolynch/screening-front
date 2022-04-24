@@ -23,10 +23,19 @@ export function ScreeningContextProvider({ children }: Props) {
     return initialValue;
   });
 
+  const [user_id, setUserId] = useState<number>(() => {
+    const saved = localStorage.getItem("userID") || '0';
+    const initialValue = JSON.parse(saved);
+    return initialValue;
+  });
+
+
+
   useEffect(() => {
     localStorage.setItem("userStorage", JSON.stringify(users));
     localStorage.setItem("userLogin", JSON.stringify(auth));
-  }, [users, auth]);
+    localStorage.setItem("userID", JSON.stringify(user_id));
+  }, [users, auth, user_id]);
 
   function addUser(user: User) {
     setUsers([...users, user]);
@@ -40,8 +49,6 @@ export function ScreeningContextProvider({ children }: Props) {
   function logoutUser() {
     setAuth(false);
   }
-
-
 
   const [first_name, setFirstName] = useState<string>('');
 
@@ -61,7 +68,6 @@ export function ScreeningContextProvider({ children }: Props) {
     setSearchedName(search_name);
   }
 
-  const [user_id, setUserId] = useState<number>(0);
 
   function addUserId(userid: number) {
     setUserId(userid);
