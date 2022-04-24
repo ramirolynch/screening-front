@@ -41,8 +41,9 @@ export function ReviewMatch (props: {elem:any, matchscore:number}) {
             <p>Score:</p>
             <p>{props.matchscore}</p>
 
-            <p>Positive Match:</p>
+            <label className='positiveMatch'>Positive Match:
             <input value={JSON.stringify(positiveMatch)} onClick={handleCheck} type='checkbox' />
+            </label>
              
             <button onClick={handleClick}>Submit Review</button>
         
