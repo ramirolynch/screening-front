@@ -2,20 +2,19 @@ import { useContext, useState } from "react";
 import { ScreeningContext } from "../Context/ScreeningContext";
 import { postReview } from "../Services/ScreeningApi";
 
-export function ReviewMatch (props: {elem:any, matchscore:number, matchedName:string}) {
+export function ReviewMatch (props: {elem:any, matchscore:number}) {
 
 
     const { searched_name, user_id } = useContext(ScreeningContext)
     const [positiveMatch, setPositiveMatch] = useState<boolean>(false);
     
-    function handleFuzzy() {
+    function handleCheck() {
     
         if (positiveMatch === false) {
             setPositiveMatch(true)
         }
         else {
             setPositiveMatch(false)
-          
         }
     }
 
@@ -43,7 +42,7 @@ export function ReviewMatch (props: {elem:any, matchscore:number, matchedName:st
             <p>{props.matchscore}</p>
 
             <p>Positive Match:</p>
-            <input id='posMatch' type='checkbox' />
+            <input value={JSON.stringify(positiveMatch)} onClick={handleCheck} type='checkbox' />
              
             <button onClick={handleClick}>Submit Review</button>
         
