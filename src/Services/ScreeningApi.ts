@@ -47,6 +47,7 @@ export function postReview(
   matched_name: string,
   score: number,
   positive_match: boolean,
+  review_comments: string,
   user_id: number
 ) {
   let review = {
@@ -55,6 +56,7 @@ export function postReview(
     ...(matched_name !== "" && { matched_name: matched_name }),
     ...{ score: score },
     ...{ positive_match: positive_match },
+    ...(review_comments !== "" && { review_comments: review_comments }),
     ...{ user_id: user_id },
   };
   return axios
