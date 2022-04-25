@@ -33,25 +33,24 @@ export function ReviewMatch (props: {elem:any, matchscore:number}) {
 
     return(
         <div className="review">
-
-            <p>Searched Name: </p>
-            <p>{searched_name}</p>
-           
-            <p>Matched Name:</p>
-            <p>{props.elem.name}</p>
-              
-         
-            <p>Score:</p>
-            <p>{props.matchscore}</p>
+        <ul>
+            <li>Searched Name:{searched_name}</li>
+            <li>Matched Name: {props.elem.name}</li>
+            <li>Score:{props.matchscore}</li>
+            </ul>
+        
+        <div className='review_form'>
 
             <label className='positiveMatch'>Positive Match:
             <input value={JSON.stringify(positiveMatch)} onClick={handleCheck} type='checkbox' />
             </label>
 
             <label>Comments:
-                <input value={reviewComment} onChange={(e: any) => {setReviewComment(e.target.value) }} type='text' />
-            </label>
-             
+            <input className='commentInput' value={reviewComment} onChange={(e: any) => {setReviewComment(e.target.value) }} type='text' />
+            </label>    
+                
+        </div>
+            
             <button onClick={handleClick}>Submit Review</button>
         
         </div>

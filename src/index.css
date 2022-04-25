@@ -34,11 +34,27 @@ ul {
   flex-direction: column;
   align-items: flex-start;
 }
+
+.review > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-block-end: 0;
+}
+.review_form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-inline-start: 40px;
+}
 .review > button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 1em;
 }
+
+.commentInput {
+  margin-left: 5px;
+  width: 455px;
+}
+
 @media only screen and (max-width: 768px) {
 }
