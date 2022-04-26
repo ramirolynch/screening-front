@@ -65,6 +65,17 @@ export function postReview(
     .catch((error) => console.log(error.response.data));
 }
 
+export function postNomatch(searched_name: string, user_id: number) {
+  let nomatch = {
+    ...(searched_name !== "" && { searched_name: searched_name }),
+    ...{ user_id: user_id },
+  };
+  return axios
+    .post(`http://localhost:3000/nomatch`, nomatch)
+    .then((response) => response.data)
+    .catch((error) => console.log(error.response.data));
+}
+
 export function logIn(email: string, password: string) {
   return axios
     .post(`http://localhost:3000/login`, {
