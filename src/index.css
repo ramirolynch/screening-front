@@ -15,11 +15,12 @@
 .searchForm > input {
   width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .searchForm > button {
   width: 100%;
-  margin: 0 auto;
+  margin: 1em auto 0.2em auto;
   padding-left: 0;
   padding-right: 0;
 }
@@ -54,6 +55,15 @@ ul {
 .commentInput {
   margin-left: 5px;
   width: 455px;
+}
+
+div > nav > ul {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+div > nav > ul > li {
+  margin-right: 1em;
 }
 
 @media only screen and (max-width: 768px) {

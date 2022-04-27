@@ -14,7 +14,7 @@ export function ScreeningList(props: { results: [] }) {
 
     function handleClick() {
         if (searched_name === '') {
-            toast.error('Searched is empty', {
+            toast.error('Name is empty', {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -23,7 +23,6 @@ export function ScreeningList(props: { results: [] }) {
                 draggable: true,
                 progress: undefined,
             });
-            
             return;
             
         } 
@@ -45,7 +44,7 @@ export function ScreeningList(props: { results: [] }) {
 
         {props.results.length > 0 ? props.results.map((elem, i) => <ScreeningResult key={i} elem={elem}></ScreeningResult>) :
             
-            <div><h3>No results found.</h3> <button onClick={handleClick}>Save to DB</button></div>}
+             <div><h3>No results.</h3><button onClick={handleClick}>Save to DB</button></div>}
         
         <ToastContainer
         position="top-center"
