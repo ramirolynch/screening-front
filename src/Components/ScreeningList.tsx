@@ -26,16 +26,28 @@ export function ScreeningList(props: { results: [] }) {
             return;
             
         } 
-        postNomatch(searched_name, user_id)
-        toast.success('Saved to DB', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
+        postNomatch(searched_name, user_id).then(() => {
+            toast.success('Saved to DB', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+        }).catch((error) => {
+            toast.error(`${error.response.data}`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
+        })
+       
     }
 
 
@@ -44,7 +56,7 @@ export function ScreeningList(props: { results: [] }) {
 
         {props.results.length > 0 ? props.results.map((elem, i) => <ScreeningResult key={i} elem={elem}></ScreeningResult>) :
             
-             <div><h3>No results.</h3><button onClick={handleClick}>Save to DB</button></div>}
+             <button className='saveToDB' onClick={handleClick}>Save to DB</button>}
         
         <ToastContainer
         position="top-center"
