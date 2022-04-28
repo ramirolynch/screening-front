@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useMemo } from 'react'
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
 
 export function SearchForm (props: {onSubmit:(name:string,countries:string, fuzzy:string)=>void}) {
 
     const [name, setName] = useState('');
     const [countries, setCountries] = useState('');
+    const options:any[] = useMemo(() => countryList().getData(), [])
     const [fuzzy, setFuzzy] = useState<string>('');
+
 
 
     function handleFuzzy() {
@@ -19,6 +23,11 @@ export function SearchForm (props: {onSubmit:(name:string,countries:string, fuzz
         console.log(fuzzy)
     }
 
+    const changeHandler = (value:any) => {
+        setCountries(value)
+      }
+    
+
     return(
         <div className="searchForm">
             <label htmlFor="name">Name: </label>
@@ -30,7 +39,7 @@ export function SearchForm (props: {onSubmit:(name:string,countries:string, fuzz
          
             <label htmlFor="country_name">Country:</label>
             
-            <input id="country_name" value={countries} onChange={(e) => setCountries(e.target.value)} type="text" /> 
+            <Select options={options} value={countries} onChange={changeHandler} />
             
 
             <button onClick={() => props.onSubmit(name, countries, fuzzy)}>Search</button>
