@@ -9,7 +9,6 @@ export function getScreening(name: string, countries: string, fuzzy: string) {
     ...(fuzzy === "true" && { fuzzy_name: fuzzy }),
     ...{ size: 2 },
   };
-
   return axios({
     method: "get",
     url: "https://data.trade.gov/consolidated_screening_list/v1/search",
@@ -88,5 +87,11 @@ export function logIn(email: string, password: string) {
 export function fetchUser(id: number) {
   return axios
     .get(`http://localhost:3000/users/${id}`, {})
+    .then((response) => response.data);
+}
+
+export function fetchMatchReviews(id: number) {
+  return axios
+    .get(`http://localhost:3000/matchreview/${id}`, {})
     .then((response) => response.data);
 }
