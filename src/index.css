@@ -71,5 +71,10 @@ div > nav > ul > li {
   width: 100%;
 }
 
+.loginContainer > form > label > input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 @media only screen and (max-width: 768px) {
 }
