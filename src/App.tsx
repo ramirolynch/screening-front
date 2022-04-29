@@ -8,6 +8,7 @@ import { LogIn } from './Components/LogIn';
 import { Nav } from './Components/Nav';
 import { MatchReviews } from './Components/MatchReviews';
 import { ScreeningContext } from './Context/ScreeningContext';
+import { NoMatches } from './Components/NoMatches';
 
 function App() {
   let { user_id } = useContext(ScreeningContext);
@@ -23,6 +24,7 @@ function App() {
         <Route path="signup" element={<SignUp></SignUp>}></Route>
         <Route path="login" element={<LogIn></LogIn>}></Route>
         <Route path="matchreview/:id" element={<MatchReviews></MatchReviews>}></Route>
+        <Route path="nomatch/:id" element={<NoMatches></NoMatches>}></Route>
         
       </Routes>
       

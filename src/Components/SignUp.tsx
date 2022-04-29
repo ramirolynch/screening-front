@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ScreeningContext } from '../Context/ScreeningContext';
 import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa";
 
-import { signUp } from "../Services/ScreeningApi";
+import { fetchUser, logIn, signUp } from "../Services/ScreeningApi";
 
 export function SignUp() {
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ export function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const [passwordConfirmShown, setPasswordConfirmShown] = useState(false);
-  const { addUser, loginUser } = useContext(ScreeningContext);
+  const { addUser, loginUser, addFirstName,addLastName,addUserId } = useContext(ScreeningContext);
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -84,6 +84,15 @@ export function SignUp() {
       setLastName("");
       setEmail("");
       setPassword("");
+     
+      logIn(email, password)
+        .then((response) => fetchUser(response.id))
+        .then((data) => {
+          addFirstName(data.first_name);
+          addLastName(data.last_name);
+          addUserId(data.id);
+        })
+        .catch((error) => console.log(error));
 
       navigate("/");
     }

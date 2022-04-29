@@ -95,3 +95,9 @@ export function fetchMatchReviews(id: number) {
     .get(`http://localhost:3000/matchreview/${id}`, {})
     .then((response) => response.data);
 }
+
+export function fetchNoMatches(id: number) {
+  return axios
+    .get(`http://localhost:3000/nomatch/${id}`, {})
+    .then((response) => response.data);
+}
