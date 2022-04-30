@@ -4,7 +4,7 @@ import { ScreeningContext } from "../Context/ScreeningContext";
 
 export function Nav() {
 
-    let { user_id } = useContext(ScreeningContext);
+    let { user_id, authenticated } = useContext(ScreeningContext);
     return(
         <div>
             <nav>
@@ -13,8 +13,7 @@ export function Nav() {
                     <li><Link to='signup'>Sign Up</Link></li>
                     <li><Link to={`matchreview/${user_id}`}>Match Reviews</Link></li>
                     <li><Link to={`nomatch/${user_id}`}>White List</Link></li>
-                <li><Link to='/'>Search</Link></li>
-                
+                    <li><Link to='/'>Search</Link></li>
                 </ul>       
             </nav>
         </div>

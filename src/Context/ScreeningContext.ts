@@ -7,7 +7,7 @@ export interface ScreeningContextModel {
   last_name: string;
   searched_name: string;
   user_id: number;
-  auth: boolean;
+  authenticated: boolean;
   addUser: (user: User) => void;
   addFirstName: (first_name: string) => void;
   addLastName: (last_name: string) => void;
@@ -23,7 +23,7 @@ const defaultValue: ScreeningContextModel = {
   last_name: "",
   searched_name: "",
   user_id: 0,
-  auth: false,
+  authenticated: false,
   addUser: () => {},
   addFirstName: () => {},
   addLastName: () => {},

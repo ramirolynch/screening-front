@@ -9,6 +9,7 @@ import { Nav } from './Components/Nav';
 import { MatchReviews } from './Components/MatchReviews';
 import { ScreeningContext } from './Context/ScreeningContext';
 import { NoMatches } from './Components/NoMatches';
+import { RequireAuth } from './Components/RequireAuth';
 
 function App() {
   let { user_id } = useContext(ScreeningContext);
@@ -20,12 +21,12 @@ function App() {
       <Nav></Nav>
       <Routes>
 
-        <Route path='/' element={<Main></Main>}></Route>
+        
         <Route path="signup" element={<SignUp></SignUp>}></Route>
         <Route path="login" element={<LogIn></LogIn>}></Route>
-        <Route path="matchreview/:id" element={<MatchReviews></MatchReviews>}></Route>
-        <Route path="nomatch/:id" element={<NoMatches></NoMatches>}></Route>
-        
+        <Route path='/' element={<RequireAuth><Main/></RequireAuth>}></Route>
+        <Route path="matchreview/:id" element={<RequireAuth><MatchReviews/></RequireAuth>}></Route>
+        <Route path="nomatch/:id" element={<RequireAuth><NoMatches/></RequireAuth>}></Route>
       </Routes>
       
     </div>

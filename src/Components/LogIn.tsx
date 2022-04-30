@@ -1,18 +1,22 @@
-import {  useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {  useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "../firebase";
+import { ScreeningContext } from "../Context/ScreeningContext";
 
 
 export function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
+  const { loginUser } = useContext(ScreeningContext);
+  let location : any = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  
   let navigate = useNavigate();
-
 
   const loginError = () =>
     toast.error("Invalid email or password", {
@@ -42,7 +46,7 @@ export function LogIn() {
           // Signed in
           const user = userCredential.user
           //...
-          console.log(user);
+          loginUser();
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -50,7 +54,7 @@ export function LogIn() {
         });
       setEmail('');
       setPassword('');
-      navigate('/');
+      navigate(from, { replace: true });
     }
   }
 

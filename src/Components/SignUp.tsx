@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { ScreeningContext } from "../Context/ScreeningContext";
 
 export function SignUp() {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ export function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const [passwordConfirmShown, setPasswordConfirmShown] = useState(false);
+  const { loginUser } = useContext(ScreeningContext);
   
 
   const togglePasswordVisiblity = () => {
@@ -77,7 +79,7 @@ export function SignUp() {
       createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
         //Signed in
         const user = userCredential.user;
-        console.log(user)
+        loginUser();
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;

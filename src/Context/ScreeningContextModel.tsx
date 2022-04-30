@@ -3,6 +3,7 @@ import { User } from "../Models/UserModel";
 import { ScreeningContext } from "./ScreeningContext";
 
 
+
 interface Props {
   children: ReactNode;
 }
@@ -17,7 +18,7 @@ export function ScreeningContextProvider({ children }: Props) {
   });
 
 
-  const [auth, setAuth] = useState<boolean>(() => {
+  const [authenticated, setAuth] = useState<boolean>(() => {
     const saved = localStorage.getItem("userLogin");
     const initialValue = saved === "true" ? true : false;
     return initialValue;
@@ -33,9 +34,9 @@ export function ScreeningContextProvider({ children }: Props) {
 
   useEffect(() => {
     localStorage.setItem("userStorage", JSON.stringify(users));
-    localStorage.setItem("userLogin", JSON.stringify(auth));
+    localStorage.setItem("userLogin", JSON.stringify(authenticated));
     localStorage.setItem("userID", JSON.stringify(user_id));
-  }, [users, auth, user_id]);
+  }, [users, authenticated, user_id]);
 
   function addUser(user: User) {
     setUsers([...users, user]);
@@ -73,12 +74,13 @@ export function ScreeningContextProvider({ children }: Props) {
     setUserId(userid);
   }
 
+
   return (
     <ScreeningContext.Provider
       value={{
         users,
         addUser,
-        auth,
+        authenticated,
         loginUser,
         logoutUser,
         last_name,

@@ -3,22 +3,12 @@ import { getScreening } from "../Services/ScreeningApi";
 import { ScreeningList } from "./ScreeningList";
 import { SearchForm } from "./SearchForm";
 import { ScreeningContext } from '../Context/ScreeningContext'
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function Main() {
 
-    const { auth, addSearchedName } = useContext(ScreeningContext);
+    const { authenticated, addSearchedName } = useContext(ScreeningContext);
     let navigate = useNavigate();
-    
-   // check if user is logged in, if auth false, navigate them to the login route
-    
-    useEffect(() => {
-        console.log(auth)
-        if (auth === false) {
-          navigate("/login");
-        }
-    }, []);
-    
 
     const [results, setResults] = useState<any>([]);
 
@@ -36,7 +26,6 @@ export function Main() {
         <div className='search'>
 
             <SearchForm onSubmit={(name, countries, fuzzy) => setSearchHandler(name, countries, fuzzy)}></SearchForm>
-            
             <ScreeningList results={results}></ScreeningList>
 
         </div>
