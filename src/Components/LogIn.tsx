@@ -6,22 +6,23 @@ import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "../firebase";
 import { ScreeningContext } from "../Context/ScreeningContext";
+import { fetchUser, logIn } from "../Services/ScreeningApi";
 
 
 export function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
-  const { loginUser } = useContext(ScreeningContext);
+  const { loginUser,addFirstName, addLastName, addUserId} = useContext(ScreeningContext);
   let location : any = useLocation();
   let from = location.state?.from?.pathname || "/";
   
   let navigate = useNavigate();
 
-  const loginError = () =>
-    toast.error("Invalid email or password", {
+  const loginError = (msg: any) =>
+    toast.error(`${msg}`, {
       position: "top-right",
-      autoClose: 900,
+      autoClose: 3000,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: false,
@@ -33,7 +34,7 @@ export function LogIn() {
     e.preventDefault();
 
     if (email.length === 0 || password.length === 0) {
-      loginError();
+      loginError("Please enter both a valid email and a password");
       return;
     } else {
       let formData = new FormData(e.currentTarget);
@@ -47,14 +48,24 @@ export function LogIn() {
           const user = userCredential.user
           //...
           loginUser();
+          navigate(from, { replace: true });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          console.log(errorMessage);
+          loginError("An invalid email and/or password was entered.");
         });
+        logIn(email, password)
+        .then((response) => fetchUser(response.id))
+        .then((data) => {
+          addFirstName(data.first_name);
+          addLastName(data.last_name);
+          addUserId(data.id);
+        })
+        .catch((error) => console.log(error));
       setEmail('');
-      setPassword('');
-      navigate(from, { replace: true });
+      setPassword('');    
     }
   }
 

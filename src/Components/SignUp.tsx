@@ -1,21 +1,26 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { ScreeningContext } from "../Context/ScreeningContext";
+import { fetchUser, logIn, signUp } from "../Services/ScreeningApi";
 
 export function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const [passwordConfirmShown, setPasswordConfirmShown] = useState(false);
-  const { loginUser } = useContext(ScreeningContext);
+  const { loginUser, addFirstName,addLastName,addUserId } = useContext(ScreeningContext);
+  let location : any = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   
-
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
@@ -24,7 +29,7 @@ export function SignUp() {
     setPasswordConfirmShown(passwordConfirmShown ? false : true);
   };
 
-  const navigate = useNavigate();
+  
 
   const signUpError = () =>
     toast.error("Please enter your email and password", {
@@ -72,7 +77,8 @@ export function SignUp() {
     } else {
      
       let formData = new FormData(e.currentTarget);
-
+      let first_name: string = formData.get("first_name") as string;
+      let last_name: string = formData.get("last_name") as string;
       let email: string = formData.get("email") as string;
       let password: string = formData.get("password") as string;
 
@@ -84,16 +90,47 @@ export function SignUp() {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
- 
+
+      logIn(email, password)
+        .then((response) => fetchUser(response.id))
+        .then((data) => {
+          addFirstName(data.first_name);
+          addLastName(data.last_name);
+          addUserId(data.id);
+        })
+        .catch((error) => console.log(error));
+      signUp(first_name, last_name, email, password)
+      setFirstName("");
+      setLastName("");
       setEmail("");
       setPassword("");
-      navigate("/");
+      navigate(from, { replace: true });
     }
   }
 
   return (
     <div className="loginContainer">
       <form onSubmit={handleSubmit}>
+      <label>
+          <p>First Name</p>
+          <input
+            type="text"
+            name="first_name"
+            id="first_name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </label>
+        <label>
+          <p>Last Name</p>
+          <input
+            type="text"
+            name="last_name"
+            id="last_name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </label>
    
         <label>
           <p>Email</p>
