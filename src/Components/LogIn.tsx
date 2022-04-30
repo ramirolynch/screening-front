@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { fetchUser, logIn } from "../Services/ScreeningApi";
-import { ScreeningContext } from "../Context/ScreeningContext";
 import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from "../firebase";
 
 
 export function LogIn() {
@@ -12,8 +12,7 @@ export function LogIn() {
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   let navigate = useNavigate();
-  const { auth,loginUser, addFirstName, addLastName, addUserId } =
-  useContext(ScreeningContext);
+
 
   const loginError = () =>
     toast.error("Invalid email or password", {
@@ -38,29 +37,20 @@ export function LogIn() {
       let email: string = formData.get("email") as string;
       let password: string = formData.get("password") as string;
 
-      logIn(email, password)
-        .then((response) => fetchUser(response.id))
-        .then((data) => {
-          addFirstName(data.first_name);
-          addLastName(data.last_name);
-          addUserId(data.id);
-        })
-        .catch((error) => console.log(error));
-
-     
-      logIn(email, password)
-        .then((response) => {
-          if (response.email !== email) {
-            return;
-          }
-            loginUser();
-            console.log(auth);
-          navigate("/");
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user
+          //...
+          console.log(user);
         })
         .catch((error) => {
-          loginError();
-          console.log(error);
+          const errorCode = error.code;
+          const errorMessage = error.message;
         });
+      setEmail('');
+      setPassword('');
+      navigate('/');
     }
   }
 

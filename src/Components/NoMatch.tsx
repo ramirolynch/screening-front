@@ -8,7 +8,6 @@ export function NoMatch(props: { elem: any }) {
                 <li>Date and Time Searched: {moment(props.elem.screening_ts).format("MM/DD/YYYY")}</li>
                 <li>Searched By: {props.elem.first_name} {props.elem.last_name}</li>
             </ul>
-
         </div>
     );
 
