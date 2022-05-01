@@ -14,7 +14,7 @@ export function MatchReviews() {
     
 
     return (
-        <div>
+        <div className='matchrev'>
 
             {matches.length > 0 ? matches.map((elem, i) => <MatchReview key={i} elem={elem}></MatchReview>) : <h3>No Match Reviews Were Found.</h3>}
 

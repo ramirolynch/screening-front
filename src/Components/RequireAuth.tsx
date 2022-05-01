@@ -10,6 +10,8 @@ export function RequireAuth({ children }: {children :JSX.Element}) {
     
     const user = auth.currentUser;
 
+    console.log('user',user)
+
     let location = useLocation();
     
     return user ? children :  <Navigate to="/login" state={{ from: location }} replace />;

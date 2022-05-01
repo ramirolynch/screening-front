@@ -55,9 +55,9 @@ export function ReviewMatch (props: {elem:any, matchscore:number}) {
             <input value={JSON.stringify(positiveMatch)} onClick={handleCheck} type='checkbox' />
             </label>
 
-            <label>Comments:
+            <label>Comments:</label>
             <input className='commentInput' value={reviewComment} onChange={(e: any) => {setReviewComment(e.target.value) }} type='text' />
-            </label>    
+                
                 
         </div>
             

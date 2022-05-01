@@ -1,6 +1,6 @@
 export function MatchReview(props: { elem:any }) {
     return (
-        <div>
+        <div className='singlereview'>
             <ul>
                 <li>List Id: {props.elem.id}</li>
                 <li>Searched Name: {props.elem.searched_name}</li>

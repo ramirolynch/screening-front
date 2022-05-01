@@ -51,7 +51,7 @@ export function ScreeningList(props: { results: [] }) {
     }
 
 
-    return (<div>
+    return (<div className='screeningList'>
 
 
         {props.results.length > 0 ? props.results.map((elem, i) => <ScreeningResult key={i} elem={elem}></ScreeningResult>) :

@@ -2,7 +2,7 @@ import moment from 'moment';
 
 export function NoMatch(props: { elem: any }) {
     return (
-        <div>
+        <div className='emptymatch'>
             <ul>
                 <li>Searched Name: {props.elem.searched_name}</li>
                 <li>Date and Time Searched: {moment(props.elem.screening_ts).format("MM/DD/YYYY")}</li>

@@ -16,7 +16,7 @@ export function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const [passwordConfirmShown, setPasswordConfirmShown] = useState(false);
-  const { loginUser, addFirstName,addLastName,addUserId } = useContext(ScreeningContext);
+  const { addFirstName,addLastName,addUserId } = useContext(ScreeningContext);
   let location : any = useLocation();
   let from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
@@ -85,7 +85,7 @@ export function SignUp() {
       createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
         //Signed in
         const user = userCredential.user;
-        loginUser();
+        navigate(from, { replace: true });
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -104,7 +104,6 @@ export function SignUp() {
       setLastName("");
       setEmail("");
       setPassword("");
-      navigate(from, { replace: true });
     }
   }
 
