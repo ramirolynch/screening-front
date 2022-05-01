@@ -132,15 +132,31 @@ div > nav > ul > li {
 
 .emptymatch {
   width: 600px;
-  margin: 0 auto 0 auto;
+  margin: 0 auto 1em auto;
   justify-content: flex-start;
   text-align: left;
+  border: 5px solid #64bbe3;
+  border-radius: 0.5em;
 }
 
 .emptymatch > ul {
-  padding: 0;
+  padding: 1em;
 }
-*/ @media only screen and (max-width: 768px) {
+
+ul > li > a {
+  color: #2b5592;
+}
+
+div > nav > ul {
+  background-color: #2b5592;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+div > nav > ul > li > a {
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
   .screeningList > button {
     width: 400px;
   }
