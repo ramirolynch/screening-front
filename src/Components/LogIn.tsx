@@ -78,10 +78,11 @@ export function LogIn() {
   
       
       <form onSubmit={handleSubmit}>
-        <h1>LogIn</h1>
-        <label>
+        <label className='emaillabel'>
           <p>Email</p>
-          <FaUser className="fauser"></FaUser>
+          <div className='emailicon'>
+            <FaUser className="fauser"></FaUser>
+          </div>
           <input
             type="text"
             name="email"
@@ -90,9 +91,11 @@ export function LogIn() {
             onChange={(e: any) => setEmail(e.target.value)}
           />
         </label>
-        <label>
+        <label className='passwordlabel'>
           <p>Password</p>
-          <FaLock className="falock"></FaLock>
+          <div className='passwordicon'>
+            <FaLock className="falock"></FaLock>
+          </div>
           <input
             type={passwordShown ? "text" : "password"}
             name="password"

@@ -48,7 +48,7 @@ ul {
   list-style-type: none;
 }
 .result {
-  background-color: beige;
+  background-color: #f7f7e7;
   border-radius: 1em;
   display: flex;
   flex-direction: column;
@@ -121,13 +121,16 @@ div > nav > ul > li {
   flex-direction: column;
   justify-content: flex-start;
   width: 600px;
-  margin: 0 auto 0 auto;
+  margin: 0 auto 1em auto;
   text-align: left;
+  border: 5px solid #64bbe3;
+  border-radius: 0.5em;
 }
 
 .singlereview > ul {
   padding: 0;
   margin-top: 0;
+  padding: 1em;
 }
 
 .emptymatch {
@@ -156,6 +159,37 @@ div > nav > ul > li > a {
   color: white;
 }
 
+.loginContainer > form {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.emaillabel,
+.passwordlabel {
+  position: relative;
+}
+
+.emailicon {
+  position: absolute;
+  top: 69%;
+  bottom: 0;
+  width: 20px;
+  color: #2b5592;
+}
+
+.passwordicon {
+  position: absolute;
+  top: 81%;
+  bottom: 0;
+  width: 20px;
+  color: #2b5592;
+}
+
+.emaillabel > input,
+.passwordlabel > input {
+  padding-left: 4%;
+}
+
 @media only screen and (max-width: 768px) {
   .screeningList > button {
     width: 400px;
@@ -171,5 +205,9 @@ div > nav > ul > li > a {
 
   .searchForm > button {
     height: 2em;
+  }
+
+  .loginContainer > form {
+    width: 400px;
   }
 }
