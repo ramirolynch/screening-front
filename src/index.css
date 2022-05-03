@@ -167,21 +167,35 @@ div > nav > ul > li > a {
 .emaillabel,
 .passwordlabel {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.faEye {
+  position: relative;
+}
+
+.faEyeDiv {
+  position: absolute;
+  top: -1.1em;
+  left: 19em;
+  color: #2b5592;
 }
 
 .emailicon {
   position: absolute;
-  top: 69%;
+  top: 67%;
+  left: 2px;
   bottom: 0;
-  width: 20px;
   color: #2b5592;
 }
 
 .passwordicon {
   position: absolute;
-  top: 81%;
+  left: 2px;
+  top: 67%;
   bottom: 0;
-  width: 20px;
   color: #2b5592;
 }
 
@@ -190,7 +204,27 @@ div > nav > ul > li > a {
   padding-left: 4%;
 }
 
+.emaillabel > p,
+.passwordlabel > p {
+  margin-bottom: 0;
+}
+
+.acc {
+  margin: 1em 0 3em 0;
+}
+
+.dontHaveAcc {
+  margin-right: 1em;
+}
+
+button.submit {
+  width: 600px;
+}
+
 @media only screen and (max-width: 768px) {
+  button.submit {
+    width: 400px;
+  }
   .screeningList > button {
     width: 400px;
   }
@@ -209,5 +243,17 @@ div > nav > ul > li > a {
 
   .loginContainer > form {
     width: 400px;
+  }
+
+  button.submit {
+    width: 400px;
+  }
+
+  div > nav > ul {
+    width: 400px;
+  }
+
+  .faEyeDiv {
+    left: 13em;
   }
 }

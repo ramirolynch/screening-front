@@ -106,10 +106,12 @@ export function LogIn() {
         </label>
 
         <i className="faEye" onClick={togglePasswordVisiblity}>
-          {passwordShown ? <FaEye /> : <FaEyeSlash />}
+          <div className='faEyeDiv'>
+            {passwordShown ? <FaEye /> : <FaEyeSlash />} 
+          </div>
         </i>
 
-        <div>
+        <div className='acc'>
           <label className="dontHaveAcc">Don't have an account?</label>
           <Link className="link" to="/signup">
             Sign Up
