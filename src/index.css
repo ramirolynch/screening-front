@@ -18,6 +18,7 @@ input {
 input#name {
   margin-top: 0.3em;
   margin-bottom: 1em;
+  border-radius: 8px;
 }
 .searchForm {
   display: flex;
@@ -55,13 +56,14 @@ ul {
   list-style-type: none;
 }
 .result {
-  background-color: #f7f7e7;
   border-radius: 1em;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin: 2em auto 1em auto;
   padding-inline-start: 0;
+  padding: 1em;
+  border: 5px solid #64bbe3;
 }
 
 .review > ul {
@@ -82,7 +84,6 @@ ul {
 }
 
 .commentInput {
-  margin-left: 5px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -306,6 +307,13 @@ div > h1 > img {
   }
 
   .emptymatch {
+    width: 400px;
+  }
+  .singlereview {
+    width: 400px;
+  }
+
+  .result {
     width: 400px;
   }
 }
