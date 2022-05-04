@@ -157,11 +157,11 @@ div > nav > ul > li {
 }
 
 ul > li > a {
-  color: #2b5592;
+  color: #0a4aac;
 }
 
 div > nav > ul {
-  background-color: #2b5592;
+  background-color: #0a4aac;
   padding: 1em;
   border-radius: 0.5em;
 }
@@ -201,7 +201,7 @@ div > nav > ul > li > a {
   position: absolute;
   top: -1.6em;
   left: 19em;
-  color: #2b5592;
+  color: #0a4aac;
 }
 
 .emailicon {
@@ -209,7 +209,7 @@ div > nav > ul > li > a {
   top: 64%;
   left: 5px;
   bottom: 0;
-  color: #2b5592;
+  color: #0a4aac;
 }
 
 .passwordicon {
@@ -217,7 +217,7 @@ div > nav > ul > li > a {
   left: 5px;
   top: 64%;
   bottom: 0;
-  color: #2b5592;
+  color: #0a4aac;
 }
 
 .emaillabel > input,
@@ -253,7 +253,7 @@ div > nav {
 }
 
 .signuplink {
-  color: #2b5592;
+  color: #0a4aac;
 }
 
 .alreadyacclabel {
@@ -261,7 +261,12 @@ div > nav {
 }
 
 .alreadylink {
-  color: #2b5592;
+  color: #0a4aac;
+}
+
+div > h1 > img {
+  display: inline-block;
+  width: 250px;
 }
 
 @media only screen and (max-width: 768px) {

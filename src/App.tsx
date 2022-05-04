@@ -10,6 +10,7 @@ import { MatchReviews } from './Components/MatchReviews';
 import { ScreeningContext } from './Context/ScreeningContext';
 import { NoMatches } from './Components/NoMatches';
 import { RequireAuth } from './Components/RequireAuth';
+import { Logo } from './Components/Logo';
 
 function App() {
   let { user_id } = useContext(ScreeningContext);
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-
+      <Logo></Logo>
       <Nav></Nav>
       <Routes>
 
