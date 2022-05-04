@@ -120,7 +120,7 @@ export function SignUp() {
             onChange={(e) => setFirstName(e.target.value)}
           />
         </label>
-        <label className='emaillabel'>
+        <label className='firstnamelabel'>
           <p>Last Name</p>
           <input
             type="text"
@@ -179,15 +179,15 @@ export function SignUp() {
             {passwordConfirmShown ? <FaEye /> : <FaEyeSlash />}
           </div>
         </i>
-        <div>
-          <label className="alreadyAcc">Already have an account?</label>
-          <Link className="link" to="/login">
+        <div className='alreadyHaveAcc'>
+          <label className='alreadyacclabel'>Already have an account?</label>
+          <Link className="alreadylink" to="/login">
             Log In
           </Link>
         </div>
         <div>
           <button className="submit" type="submit">
-            SignUp
+            Sign Up
           </button>
           <ToastContainer />
         </div>

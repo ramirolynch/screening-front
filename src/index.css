@@ -189,6 +189,9 @@ div > nav > ul > li > a {
   text-align: left;
   margin-bottom: 0;
 }
+.firstnamelabel > p {
+  margin-bottom: 0;
+}
 
 .faEye {
   position: relative;
@@ -235,6 +238,10 @@ div > nav > ul > li > a {
   margin-right: 1em;
 }
 
+.alreadyHaveAcc {
+  margin: 1em 0 2em 0;
+}
+
 button.submit {
   width: 600px;
   height: 3em;
@@ -246,6 +253,14 @@ div > nav {
 }
 
 .signuplink {
+  color: #2b5592;
+}
+
+.alreadyacclabel {
+  margin-right: 1em;
+}
+
+.alreadylink {
   color: #2b5592;
 }
 
