@@ -48,6 +48,7 @@ input#name {
   padding-left: 0;
   padding-right: 0;
   height: 3em;
+  border-radius: 8px;
 }
 
 ul {
@@ -113,6 +114,7 @@ div > nav > ul > li {
   width: 600px;
   margin: 1em auto 0 auto;
   height: 3em;
+  border-radius: 8px;
 }
 
 .screeningList {
@@ -178,6 +180,14 @@ div > nav > ul > li > a {
   display: flex;
   flex-direction: column;
   text-align: left;
+}
+
+.firstnamelabel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 0;
 }
 
 .faEye {

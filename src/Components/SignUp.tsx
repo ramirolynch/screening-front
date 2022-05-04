@@ -111,7 +111,7 @@ export function SignUp() {
     <div className="loginContainer">
       <form onSubmit={handleSubmit}>
       <label>
-          <p>First Name</p>
+          <p className='firstnamelabel'>First Name</p>
           <input
             type="text"
             name="first_name"
@@ -120,7 +120,7 @@ export function SignUp() {
             onChange={(e) => setFirstName(e.target.value)}
           />
         </label>
-        <label>
+        <label className='emaillabel'>
           <p>Last Name</p>
           <input
             type="text"
@@ -131,9 +131,11 @@ export function SignUp() {
           />
         </label>
    
-        <label>
+        <label className='emaillabel'>
           <p>Email</p>
-          <FaUser className="fauser"></FaUser>
+          <div className='emailicon'>
+            <FaUser className="fauser"></FaUser>
+          </div>
           <input
             type="text"
             name="email"
@@ -142,9 +144,11 @@ export function SignUp() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <label>
+        <label className='passwordlabel'>
           <p>Password</p>
-          <FaLock className="falock"></FaLock>
+          <div className='passwordicon'>
+            <FaLock className="falock"></FaLock>
+          </div>
           <input
             type={passwordShown ? "text" : "password"}
             name="password"
@@ -154,11 +158,15 @@ export function SignUp() {
           />
         </label>
         <i className="faEye" onClick={togglePasswordVisiblity}>
-          {passwordShown ? <FaEye /> : <FaEyeSlash />}
+          <div className='faEyeDiv'>
+            {passwordShown ? <FaEye /> : <FaEyeSlash />}
+          </div>
         </i>
-        <label>
+        <label className='passwordlabel'>
           <p>Confirm Password</p>
-          <FaLock className="falock"></FaLock>
+          <div className='passwordicon'>
+            <FaLock className="falock"></FaLock>
+          </div>
           <input
             className="confirmPass"
             type={passwordConfirmShown ? "text" : "password"}
@@ -167,7 +175,9 @@ export function SignUp() {
           />
         </label>
         <i className="faEye" onClick={toggleConfirmPasswordVisiblity}>
-          {passwordConfirmShown ? <FaEye /> : <FaEyeSlash />}
+          <div className='faEyeDiv'>
+            {passwordConfirmShown ? <FaEye /> : <FaEyeSlash />}
+          </div>
         </i>
         <div>
           <label className="alreadyAcc">Already have an account?</label>
