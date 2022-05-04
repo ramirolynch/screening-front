@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 import { ScreeningContext } from "../Context/ScreeningContext";
 import {getAuth, signOut} from "firebase/auth"
 import { auth } from "../firebase";
@@ -8,6 +8,7 @@ export function Nav() {
 
     let { user_id, authenticated } = useContext(ScreeningContext);
     const navigate = useNavigate();
+    const isActive = useState<boolean>(false);
 
     const user = auth.currentUser;
 
@@ -22,11 +23,11 @@ export function Nav() {
         <div>
             <nav>
                 <ul>
-                    {!user && <li><Link to='login'>Login</Link></li>}
-                    {user && <li><Link to='/'>Search</Link></li>}
-                    {user && <li><Link to={`matchreview/${user_id}`}>Match Reviews</Link></li>}
-                    {user && <li><Link to={`nomatch/${user_id}`}>White List</Link></li>}
-                    {user && <li><button onClick={handleClick}>Log Out</button></li>}
+                    {!user && <li><NavLink style={({ isActive }) => ({borderBottom: isActive? "#64bbe3 solid 2px" : '', opacity: isActive? 1:""})} to='login'>Login</NavLink></li>}
+                    {user && <li><NavLink style={({ isActive }) => ({borderBottom: isActive? "#64bbe3 solid 2px" : '', opacity: isActive? 1:""})} to='/'>Search</NavLink></li>}
+                    {user && <li><NavLink style={({ isActive }) => ({borderBottom: isActive? "#64bbe3 solid 2px" : '', opacity: isActive? 1:""})} to={`matchreview/${user_id}`}>Match Reviews</NavLink></li>}
+                    {user && <li><NavLink style={({ isActive }) => ({borderBottom: isActive? "#64bbe3 solid 2px" : '', opacity: isActive? 1:""})} to={`nomatch/${user_id}`}>White List</NavLink></li>}
+                    {user && <li><a onClick={handleClick}>Log Out</a></li>}
                 </ul>       
             </nav>
         </div>

@@ -113,7 +113,7 @@ export function LogIn() {
 
         <div className='acc'>
           <label className="dontHaveAcc">Don't have an account?</label>
-          <Link className="link" to="/signup">
+          <Link className="signuplink" to="/signup">
             Sign Up
           </Link>
         </div>

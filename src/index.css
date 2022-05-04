@@ -4,6 +4,12 @@ body,
 html {
   font-family: "Roboto", sans-serif;
 }
+body {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
 button,
 input {
   font-family: "Roboto", sans-serif;
@@ -99,6 +105,8 @@ div > nav > ul > li {
 .loginContainer > form > label > input {
   width: 100%;
   box-sizing: border-box;
+  height: 3em;
+  border-radius: 8px;
 }
 
 .screeningList > button {
@@ -178,23 +186,23 @@ div > nav > ul > li > a {
 
 .faEyeDiv {
   position: absolute;
-  top: -1.1em;
+  top: -1.6em;
   left: 19em;
   color: #2b5592;
 }
 
 .emailicon {
   position: absolute;
-  top: 67%;
-  left: 2px;
+  top: 64%;
+  left: 5px;
   bottom: 0;
   color: #2b5592;
 }
 
 .passwordicon {
   position: absolute;
-  left: 2px;
-  top: 67%;
+  left: 5px;
+  top: 64%;
   bottom: 0;
   color: #2b5592;
 }
@@ -219,6 +227,16 @@ div > nav > ul > li > a {
 
 button.submit {
   width: 600px;
+  height: 3em;
+  border-radius: 8px;
+}
+
+div > nav {
+  margin-top: 1em;
+}
+
+.signuplink {
+  color: #2b5592;
 }
 
 @media only screen and (max-width: 768px) {
@@ -255,5 +273,9 @@ button.submit {
 
   .faEyeDiv {
     left: 13em;
+  }
+
+  .emptymatch {
+    width: 400px;
   }
 }
