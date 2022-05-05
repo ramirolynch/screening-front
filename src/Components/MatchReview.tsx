@@ -1,4 +1,11 @@
-export function MatchReview(props: { elem:any }) {
+import { AiFillDelete } from "react-icons/ai";
+import { deleteMatchReview } from "../Services/ScreeningApi";
+
+export function MatchReview(props: { elem: any }) {
+    
+    function handleClick(id: number) {
+        deleteMatchReview(id)
+    }
     return (
         <div className='singlereview'>
             <ul>
@@ -9,6 +16,9 @@ export function MatchReview(props: { elem:any }) {
                 <li>Positive Match: {props.elem.positive_match === true ? `Yes`:`No`}</li>
                 <li>Review Comments: {props.elem.review_comments}</li>
             </ul>
+            <button className="deletematch" onClick={() => handleClick(props.elem.id)}>
+          <AiFillDelete />
+        </button>
 
         </div>
     );

@@ -270,6 +270,21 @@ div > h1 > img {
   width: 250px;
 }
 
+.deleterev {
+  position: relative;
+  left: 43%;
+  margin-bottom: 1em;
+  color: #0a4aac;
+}
+
+.deletematch {
+  width: fit-content;
+  position: relative;
+  left: 43%;
+  margin-bottom: 1em;
+  color: #0a4aac;
+}
+
 @media only screen and (max-width: 768px) {
   button.submit {
     width: 400px;
@@ -315,5 +330,10 @@ div > h1 > img {
 
   .result {
     width: 400px;
+  }
+
+  .deleterev,
+  .deletematch {
+    left: 39%;
   }
 }
