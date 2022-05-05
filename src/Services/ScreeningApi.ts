@@ -101,3 +101,15 @@ export function fetchNoMatches(id: number) {
     .get(`http://localhost:3000/nomatch/${id}`, {})
     .then((response) => response.data);
 }
+
+export function deleteMatchReview(id: number) {
+  return axios
+    .delete(`http://localhost:3000/matchreview/${id}`, {})
+    .then((response) => response.data);
+}
+
+export function deleteEmptyMatch(id: number) {
+  return axios
+    .delete(`http://localhost:3000/nomatch/${id}`, {})
+    .then((response) => response.data);
+}
