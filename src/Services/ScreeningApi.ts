@@ -113,3 +113,5 @@ export function deleteEmptyMatch(id: number) {
     .delete(`http://localhost:3000/nomatch/${id}`, {})
     .then((response) => response.data);
 }
+
+// need to add put for editing match reviews and empty matches
