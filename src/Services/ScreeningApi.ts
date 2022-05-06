@@ -30,7 +30,7 @@ export function signUp(
   password: string
 ) {
   return axios
-    .post(`http://localhost:3000/signup`, {
+    .post(`https://screening-back.vercel.app/signup`, {
       first_name: first_name,
       last_name: last_name,
       email: email,
@@ -59,7 +59,7 @@ export function postReview(
     ...{ user_id: user_id },
   };
   return axios
-    .post(`http://localhost:3000/matchreview`, review)
+    .post(`https://screening-back.vercel.app/matchreview`, review)
     .then((response) => response.data)
     .catch((error) => console.log(error.response.data));
 }
@@ -70,14 +70,14 @@ export function postNomatch(searched_name: string, user_id: number) {
     ...{ user_id: user_id },
   };
   return axios
-    .post(`http://localhost:3000/nomatch`, nomatch)
+    .post(`https://screening-back.vercel.app/nomatch`, nomatch)
     .then((response) => response.data)
     .catch((error) => console.log(error.response.data));
 }
 
 export function logIn(email: string, password: string) {
   return axios
-    .post(`http://localhost:3000/login`, {
+    .post(`https://screening-back.vercel.app/login`, {
       email: email,
       password: password,
     })
@@ -86,31 +86,31 @@ export function logIn(email: string, password: string) {
 
 export function fetchUser(id: number) {
   return axios
-    .get(`http://localhost:3000/users/${id}`, {})
+    .get(`https://screening-back.vercel.app/users/${id}`, {})
     .then((response) => response.data);
 }
 
 export function fetchMatchReviews(id: number) {
   return axios
-    .get(`http://localhost:3000/matchreview/${id}`, {})
+    .get(`https://screening-back.vercel.app/matchreview/${id}`, {})
     .then((response) => response.data);
 }
 
 export function fetchNoMatches(id: number) {
   return axios
-    .get(`http://localhost:3000/nomatch/${id}`, {})
+    .get(`https://screening-back.vercel.app/nomatch/${id}`, {})
     .then((response) => response.data);
 }
 
 export function deleteMatchReview(id: number) {
   return axios
-    .delete(`http://localhost:3000/matchreview/${id}`, {})
+    .delete(`https://screening-back.vercel.app/matchreview/${id}`, {})
     .then((response) => response.data);
 }
 
 export function deleteEmptyMatch(id: number) {
   return axios
-    .delete(`http://localhost:3000/nomatch/${id}`, {})
+    .delete(`https://screening-back.vercel.app/nomatch/${id}`, {})
     .then((response) => response.data);
 }
 
