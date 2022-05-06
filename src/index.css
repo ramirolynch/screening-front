@@ -343,14 +343,14 @@ div > h1 > img {
     width: 300px;
     padding-inline-start: 0;
     padding-left: 3%;
-    margin-left: 4%;
+    margin-left: 7%;
   }
 
   .emaillabel,
   .passwordlabel,
   .firstnamelabel {
     width: 300px;
-    margin-left: 7%;
+    margin-left: 10%;
   }
   button.submit {
     width: 300px;
@@ -365,5 +365,9 @@ div > h1 > img {
     margin: 0 auto;
     position: relative;
     right: 2%;
+  }
+
+  .faEyeDiv {
+    left: 9em;
   }
 }
