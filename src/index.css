@@ -337,3 +337,33 @@ div > h1 > img {
     left: 39%;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  div > nav > ul {
+    width: 300px;
+    padding-inline-start: 0;
+    padding-left: 3%;
+    margin-left: 4%;
+  }
+
+  .emaillabel,
+  .passwordlabel,
+  .firstnamelabel {
+    width: 300px;
+    margin-left: 7%;
+  }
+  button.submit {
+    width: 300px;
+    width: 200px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    right: 6%;
+  }
+
+  div > h1 > img {
+    margin: 0 auto;
+    position: relative;
+    right: 2%;
+  }
+}

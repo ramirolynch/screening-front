@@ -110,8 +110,8 @@ export function SignUp() {
   return (
     <div className="loginContainer">
       <form onSubmit={handleSubmit}>
-      <label>
-          <p className='firstnamelabel'>First Name</p>
+      <label className='firstnamelabel'>
+          <p>First Name</p>
           <input
             type="text"
             name="first_name"
