@@ -15,8 +15,20 @@ This app was developed using Express JS in the backend with PG-Promise to connec
 This app helps exporters screen entities and save those searches in "Match Reviews". Users can also add searches to White List when the searched name does not return any results.
 In short, this app helps fulfill due diligence requirements when exporting or conducting business with outside of the US.
 
-### Screeshots
+### Screenshots
 
 #### Login
 
 ![loginscreen](src/Images/sslogin.png)
+
+#### Search
+
+![search](src/Images/searchscreen.png)
+
+#### Match Reviews
+
+![matchreviews](src/Images/matchreviews.png)
+
+#### White List
+
+![whitelist](src/Images/whitelist.png)
