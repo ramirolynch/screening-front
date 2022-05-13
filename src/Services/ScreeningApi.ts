@@ -7,7 +7,6 @@ export function getScreening(name: string, countries: string, fuzzy: string) {
     ...(name !== "" && { name: name }),
     ...(countries !== "" && { countries: countries }),
     ...(fuzzy === "true" && { fuzzy_name: fuzzy }),
-    ...{ size: 2 },
   };
   return axios({
     method: "get",
