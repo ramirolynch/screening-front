@@ -11,14 +11,15 @@ export function Main() {
     let navigate = useNavigate();
 
     const [results, setResults] = useState<any>([]);
+    const [counter, setCounter] = useState<boolean>(false);
 
 
-    function setSearchHandler(name: string,countries:string, fuzzy:string) {
-        
-        getScreening(name, countries, fuzzy).then(response => setResults(response.results));
+    function setSearchHandler(name: string, countries: string, fuzzy: string) {
+      
+        getScreening(name, countries, fuzzy).then(response => {
+            setResults(response.results);
+        }).then(()=>setCounter(true))
         addSearchedName(name);
-        
-        console.log(results);
     }
 
     return (
@@ -26,7 +27,11 @@ export function Main() {
         <div className='search'>
 
             <SearchForm onSubmit={(name, countries, fuzzy) => setSearchHandler(name, countries, fuzzy)}></SearchForm>
+            
+            <p className={counter === false ? 'hide' : 'show'}> Number of Results: {results.length}</p>
+         
             <ScreeningList results={results}></ScreeningList>
+                
 
         </div>
     );

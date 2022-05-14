@@ -285,6 +285,13 @@ div > h1 > img {
   color: #0a4aac;
 }
 
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
   button.submit {
     width: 400px;
