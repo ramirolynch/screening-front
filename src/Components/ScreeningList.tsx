@@ -12,6 +12,7 @@ export function ScreeningList(props: { results: [] }) {
     
     const { searched_name, user_id } = useContext(ScreeningContext);
 
+
     function handleClick() {
         if (searched_name === '') {
             toast.error('Name is empty', {
