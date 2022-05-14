@@ -61,8 +61,7 @@ ul {
   flex-direction: column;
   align-items: flex-start;
   margin: 2em auto 1em auto;
-  padding-inline-start: 0;
-  padding-left: 1em;
+  /* padding-inline-start: 0; */
   padding: 1em;
   border: 5px solid #64bbe3;
 }
