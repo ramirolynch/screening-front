@@ -2,11 +2,17 @@ import axios from "axios";
 
 const accessToken = process.env.REACT_APP_TRADE_ACCESS_TOKEN || "";
 
-export function getScreening(name: string, countries: string, fuzzy: string) {
+export function getScreening(
+  name: string,
+  countries: string,
+  fuzzy: string,
+  lists: string
+) {
   let params = {
     ...(name !== "" && { name: name }),
     ...(countries !== "" && { countries: countries }),
     ...(fuzzy === "true" && { fuzzy_name: fuzzy }),
+    ...(lists !== "" && { sources: lists }),
     ...{ size: 100 },
   };
   return axios({

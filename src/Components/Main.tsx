@@ -14,9 +14,9 @@ export function Main() {
     const [counter, setCounter] = useState<boolean>(false);
 
 
-    function setSearchHandler(name: string, countries: string, fuzzy: string) {
+    function setSearchHandler(name: string, countries: string, fuzzy: string, lists:string) {
       
-        getScreening(name, countries, fuzzy).then(response => {
+        getScreening(name, countries, fuzzy, lists).then(response => {
             setResults(response.results);
         }).then(()=>setCounter(true))
         addSearchedName(name);
@@ -26,7 +26,7 @@ export function Main() {
         
         <div className='search'>
 
-            <SearchForm onSubmit={(name, countries, fuzzy) => setSearchHandler(name, countries, fuzzy)}></SearchForm>
+            <SearchForm onSubmit={(name, countries, fuzzy, lists) => setSearchHandler(name, countries, fuzzy, lists)}></SearchForm>
             
             <p className={counter === false ? 'hide' : 'show'}> Number of Results: {results.length}</p>
          
