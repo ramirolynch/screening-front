@@ -18,6 +18,7 @@ export function Main() {
       
         getScreening(name, countries, fuzzy, lists).then(response => {
             setResults(response.results);
+            console.log(response.results);
         }).then(()=>setCounter(true))
         addSearchedName(name);
     }

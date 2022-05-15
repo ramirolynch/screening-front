@@ -29,6 +29,8 @@ export function ScreeningResult(props: { elem: any }) {
                 {props.elem.alt_names.length > 0 && <li>Alternate Names: {props.elem.alt_names}</li>}
                 {props.elem.dates_of_birth.length > 0 && <li>Date of Birth: {props.elem.dates_of_birth}</li>}
                 {props.elem.places_of_birth.length > 0 && <li>Places of Birth: {props.elem.places_of_birth}</li>}
+                {props.elem.source.length > 0 && <li>Source List: {props.elem.source}</li>}
+                {props.elem.source_list_url.length > 0 && <li><a href={props.elem.source_list_url}>Source List Url</a></li>}
                 <li>Score: {fuzz.ratio(searched_name,props.elem.name)} </li>
             </ul>
             <button onClick={handleClick}>
