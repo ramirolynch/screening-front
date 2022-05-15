@@ -43,15 +43,24 @@ export function SearchForm (props: {onSubmit:(name:string,countries:string, fuzz
 
             <label htmlFor="country_name">Country:</label>
 
-            <Select className='dpl' options={options} value={countries} onChange={changeHandler} />
+            <Select options={options} value={countries} onChange={changeHandler} />
 
             <label htmlFor="dplist" className='labeldpl'>List:</label>
             <select className='dpl' onChange={(e) => { setLists(e.target.value) }}>
-            <option value=''>Select list</option>
-            <option value="DPL">Denied Persons List</option>
-            <option value="EL">Entity List</option>
-            <option value="MEU">Military End User</option>
-            <option value="UVL">Unverified List</option>
+                <option value=''>Select list...</option>
+                <option value="DPL">Denied Persons List</option>
+                <option value="EL">Entity List</option>
+                <option value="MEU">Military End User</option>
+                <option value="UVL">Unverified List</option>
+                <option value="ISN">Nonproliferation Sanctions</option>
+                <option value="DTC">ITAR Debarred</option>
+                <option value="CAP">Correspondent Account or Payable-Through Account Sanctions</option>
+                <option value="CMIC">Non-SDN Chinese Military-Industrial Complex Companies List</option>
+                <option value="FSE">Foreign Sanctions Evaders</option>
+                <option value="MBS">Non-SDN Menu-Based Sanctions List</option>
+                <option value="PLC">Palestinian Legislative Council List</option>
+                <option value="SSI">Sectoral Sanctions Identifications List</option>
+                <option value="SDN">Specially Designated Nationals</option>
             </select>
 
         <button onClick={() => props.onSubmit(name, countries, fuzzy, lists)}>Search</button>
